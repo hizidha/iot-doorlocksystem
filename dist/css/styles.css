@@ -1,0 +1,39 @@
+.pageCenter {
+    height: 100vh;
+}
+.inputMe {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+}
+.inputMe:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px #007bff;
+}
+.btnSet,
+.btnMe {
+    padding: 0.5rem 1rem;
+}
+.btnSet {
+    width: 9rem;
+}
+.btnMe {
+    color: white;
+    background-color: #007bff;
+}
+.btnMe:hover {
+    background-color: #172554;
+    color: white;
+}
+.activeMe {
+    background-color: #007bff;
+}
+.aFooter {
+    color: #007bff;
+}
+.aFooter:hover {
+    color: #172554;
+    text-decoration: none;
+}
+.space-sidebar {
+    color: 	#343A40;
+}
