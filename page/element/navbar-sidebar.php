@@ -72,6 +72,12 @@
                 <p>History</p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="?page=chartgraph" class="nav-link main-nav-link">
+                <i class="nav-icon far fa-chart-bar"></i>
+                <p>Data Visualization</p>
+              </a>
+            </li>
             <?php if($role_user == 0 || $role_user == 1): ?>
               <li class="nav-header text-bold pl-0">Data Management</li>   
               <li class="nav-item">
@@ -93,9 +99,9 @@
     <!-- /.sidebar-menu -->
     <?php
       if ($role_user != 2) { 
-        $roleStyle = 'height: 16.8rem;'; 
+        $roleStyle = 'height: 14rem;'; 
       } else { 
-        $roleStyle = 'height: 24.75rem;'; 
+        $roleStyle = 'height: 18.67rem;'; 
       }
     ?>
       <div class="space-sidebar" style="<?php echo $roleStyle; ?>"></div>

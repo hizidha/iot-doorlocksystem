@@ -81,8 +81,13 @@
                   <?php 
                     require "./event/connection_db.php";
                     $sql = "SELECT uid_card.*, user.full_name
-                            FROM uid_card INNER JOIN user 
-                            ON uid_card.id_owner = user.id";
+                            FROM uid_card
+                            INNER JOIN user ON uid_card.id_owner = user.id
+                            WHERE (CASE
+                                      WHEN uid_card.id_owner = 1 THEN 0
+                                      WHEN uid_card.id_owner = 2 AND uid_card.serial_number IS NULL THEN 0
+                                      ELSE 1
+                                  END) = 1";
                     $result = mysqli_query($conn, $sql);
 
                     $i = 0; 

@@ -29,6 +29,9 @@
   <!-- Custom JS -->
   <script src="./dist/js/script.js"></script>
 
+  <!-- ChartJS -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <?php
     $defaultPage = "portal";
     $requestedPage = isset($_GET['page']) ? htmlspecialchars($_GET['page']) : $defaultPage;
@@ -57,9 +60,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/vfs_fonts.js"></script><!-- PDFMake -->
   <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script><!-- DataTables Buttons HTML5 JS -->
   <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script><!-- DataTables Buttons Print JS -->
-  
-  <!-- ChartJS -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/jquery.vmap.min.js"></script><!-- JQVMap -->
   <script src="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/maps/jquery.vmap.usa.js"></script><!-- JQVMap -->
@@ -86,118 +86,5 @@
       .addClass('btn-group');
     });
   </script>
-<script>
-    var jsonDataCard = <?php echo json_encode($dataTappingcard); ?>;
-    var jsonDataGuest = <?php echo json_encode($dataGuest); ?>;
-    var jsonDataButton = <?php echo json_encode($dataButton); ?>;
-
-    var labels = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
-    var datasetsCard = processData(jsonDataCard);
-    var ctxCard = document.getElementById('chartTapping').getContext('2d');
-    var chartCard = new Chart(ctxCard, {
-        type: 'bar',
-        data: {
-            labels: labels,
-            datasets: datasetsCard
-        },
-        options: {
-          scales: {
-                x: {
-                    title: {
-                        display: true,
-                        text: 'Day of Week'
-                    }
-                },
-                y: {
-                    beginAtZero: true,
-                    title: {
-                        display: true,
-                        text: 'Total Actions'
-                    }
-                }
-            }
-        }
-    });
-
-
-    var datasetsGuest = processData(jsonDataGuest);
-    var ctxGuest = document.getElementById('chartGuest').getContext('2d');
-    var chartGuest = new Chart(ctxGuest, {
-        type: 'line',
-        data: {
-            labels: labels,
-            datasets: datasetsGuest
-        },
-        options: {
-            scales: {
-                x: {
-                    title: {
-                        display: true,
-                        text: 'Day of Week'
-                    },
-                },
-                y: {
-                    beginAtZero: true,
-                    title: {
-                        display: true,
-                        text: 'Total Actions'
-                    }
-                }
-            }
-        }
-    });
-
-    var datasetsButton = processData(jsonDataButton);
-    var ctxButton = document.getElementById('chartButton').getContext('2d');
-    var chartButton = new Chart(ctxButton, {
-        type: 'line',
-        data: {
-            labels: labels,
-            datasets: datasetsButton
-        },
-        options: {
-            scales: {
-                x: {
-                    title: {
-                        display: true,
-                        text: 'Day of Week'
-                    },
-                },
-                y: {
-                    beginAtZero: true,
-                    title: {
-                        display: true,
-                        text: 'Total Actions'
-                    }
-                }
-            }
-        }
-    });
-
-    function processData(data) {
-        var datasets = [];
-        var ownersData = {};
-
-        data.forEach(function (entry) {
-            var owner = entry.owners;
-            if (!ownersData[owner]) {
-                ownersData[owner] = {
-                    label: owner,
-                    data: Array(labels.length).fill(0),
-                    backgroundColor: 'rgba(' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ',0.5)'
-                };
-            }
-            ownersData[owner].data[parseInt(entry.day_of_week) - 1] += parseInt(entry.total_actions);
-        });
-
-        Object.keys(ownersData).forEach(function (owner) {
-            datasets.push(ownersData[owner]);
-        });
-
-        return datasets;
-    }
-</script>
-
 </body>
 </html>
