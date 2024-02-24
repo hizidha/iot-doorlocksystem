@@ -1,1 +1,3 @@
-# Door Lock System
+# Internet of Things-based Door Lock System
+Sistem kunci pintu berbasis Internet of Things (IoT) adalah proyek yang mengintegrasikan teknologi IoT ke dalam sistem penguncian pintu untuk meningkatkan keamanan dan keterhubungan. Dalam proyek ini dirancang dan dikembangkan sebuah sistem yang memungkinkan pengguna untuk mengontrol kunci pintu mereka melalui jaringan internet. 
+Proyek ini merupakan salah satu bentuk tanggung jawab kepada mitra untuk menyelesaikan program Magang dan Studi Independen Bersertifikat Batch 5 yang diselenggarakan oleh Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi tahun 2023.
